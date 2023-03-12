@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% block content%}
+<div>
+  <a class="btn btn-danger mt-5 w-25"   href="{{url_for('create')}}">Create new Post</a>
+</div>
+
+{% for x in blogs %}     
+
+        <div class="col-lg-4 col-sm-6   d-flex grip mt-3" >
+          <div class="card  rounded-3 text-center h-100 mycard2 w-75 bg-dark text-warning" style="width:'18rem';box-shadow:'5px 5px 5px gray'">   
+                 <img src="{{url_for('static', filename='images/p2.jpeg')}}" class="card-img-top p-2 rounded-3" style="height:'250px'" alt="" >
+                 <div class="card-body">
+                  <h5 class="card-title  mt-1 fw-bolder para">Name: {{x.name}}</h5>
+
+                 <h5 class="card-text fw-bold text-warning">email: {{x.email}} </h5>
+
+                 <h5 class="card-text fw-bold text-warning">Accepted: {{x.accepted}} </h5> 
+                 <a href="{{url_for('show', id=x.id)}}" class="btn btn-primary w-50">
+                  Show
+                </a>
+
+                 <a href="{{url_for('delete', id=x.id)}}" class="btn btn-danger w-50 ">
+                  Delete
+                </a><br>
+             
+            
+                </div>
+          </div>
+      </div>
+{% endfor %}
+{%endblock content%}
+
